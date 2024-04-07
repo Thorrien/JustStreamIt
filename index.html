@@ -5,132 +5,413 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JustStreamIt</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            color: #fff;
+            padding: 20px 0;
+        }
+        .header_container {
+            background-color: #61787F;
+            border: 1px solid #1f1f1f;
+        }
+        .film-container {
+            margin-top: 20px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        .film-container h2 {
+            margin-bottom: 20px;
+            color: #1f1f1f;
+            font-weight: bold;
+            font-size: 45px;
+        }
+        .film-card {
+            background-color: #fff;
+            border: 4px solid #1f1f1f;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            margin-left: auto; 
+            margin-right: auto; 
+            display: flex;
+        }
+        .film-card .image-container {
+            flex: 0 0 auto;
+            margin-right: 20px;
+        }
+        .film-card .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .film-card .content-container {
+            flex: 1 1 auto;
+        }
+        .film-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-size: 45px;
+            color: #1f1f1f;
+            font-weight: bold;
+        }
+        .film-card p {
+            color: #1f1f1f;
+            font-size: 30px; 
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: lighter;
+        }
+        .film-card button {
+            background-color: #ff00c8;
+            color: #fff;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+        .film-card button:hover {
+            background-color: #61787F;
+        }
+
+        .mini-img {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .mini-img img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            background-color: rgba(32, 32, 32, 0.5);
+            padding: 20px;
+            text-align: left;
+            color: #fff;
+            box-sizing: border-box; 
+        }
+        
+        .overlay h3 {
+            margin-bottom: 10px;
+        }
+        
+        .overlay button {
+            background-color: #1f1f1f;
+            color: #fff;
+            border: none;
+            padding: 8px 30px;
+            border-radius : 25px;
+            cursor: pointer;
+        }
+        
+        .overlay button:hover {
+            background-color: #61787F;
+        }
+    </style>
 </head>
 <body>
-    <script src="js\genreApiRequste.js"></script>
     <header>
-        <div class="container bg-primary ">  
-            <div class="row align-items-center "> 
-                <div class="col-md-2">      
-                    <img class="img-fluid w-100" src="img\logo.png" alt="">
+        <div class="container header_container">
+            <div class="row align-items-center ">
+                <div class="col-md-2">
+                    <img class="img-fluid" src="img/logo.png" alt="Logo">
                 </div>
-                <div class="col-md-9">             
+                <div class="col-md-9">
                     <h1>Vidéo à la demande</h1>
                 </div>
-
+            </div>
         </div>
-
     </header>
-    <div id="Film" class="container">
+    <div class="container film-container">
         <h2>Meilleur film</h2>
-        <div class="row bg-light rounded border border-primary">
-            <div class="col-md-4">
-                <img src="https://picsum.photos/id/237/200/300" alt="">
-            </div>
-            <div class="col-md-8" id="contenu">
-                <h3>The Big Lebowski</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button class="btn btn-primary">Détails</button>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div id="multipropo" class="container">
-        <h2 id="">Mystery</h2>
-        <div class="d-flex justify-content-center align-items-center" >
-            <div class="row">
-                <div class="col">
-                    <div>
-                        <img src="https://picsum.photos/id/237/200/300" alt="">
-                        <h3>Titanic</h3>
-                        <button>Détails</button>
+        <div class="row">
+            <div>
+                <div class="film-card">
+                    <div class="image-container">
+                        <img src="https://picsum.photos/id/237/200/300" alt="Film 1">
                     </div>
-                    <div>
-                        <img src="https://picsum.photos/id/237/200/300" alt="">
-                        <h3>Retour vers le futur</h3>
-                        <button>Détails</button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div>
-                        <img src="https://picsum.photos/id/237/200/300" alt="">
-                        <h3>Titanic</h3>
-                        <button>Détails</button>
-                    </div>
-                    <div>
-                        <img src="https://picsum.photos/id/237/200/300" alt="">
-                        <h3>Retour vers le futur</h3>
-                        <button>Détails</button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div>
-                        <img src="https://picsum.photos/id/237/200/300" alt="">
-                        <h3>Titanic</h3>
-                        <button>Détails</button>
-                    </div>
-                    <div>
-                        <img src="https://picsum.photos/id/237/200/300" alt="">
-                        <h3>Retour vers le futur</h3>
-                        <button>Détails</button>
+                    <div class="content-container">
+                        <h3>The Big Lebowski</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#modalfade">Détails</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="Film" class="container">
-        <h2>catégorie 2</h2>
-        <div class="row bg-light rounded border border-primary">
+    <div id="multipropo" class="container film-container">
+        <h2>Mystery</h2>
+        <div class="row">
             <div class="col-md-4">
-                <img src="https://picsum.photos/id/237/200/300" alt="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8" id="contenu">
-                <h3>The Big Lebowski</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button class="btn btn-primary">Détails</button>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="Film" class="container ">
-        <h2>catégorie 3</h2>
-        <div class="row bg-light rounded border border-primary">
+    <div id="multipropo" class="container film-container">
+        <h2>Catégorie 2</h2>
+        <div class="row">
             <div class="col-md-4">
-                <img src="https://picsum.photos/id/237/200/300" alt="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8" id="contenu">
-                <h3>The Big Lebowski</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button class="btn btn-primary">Détails</button>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="Film sélecteur" class="container">
+    <div id="multipropo" class="container film-container">
+        <h2>Catégorie 3</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="multipropo" class="container film-container">
         <div class="row align-items-center"> 
-            <div class="col-md-4">
-                <h2>Autres :</h2>
-            </div>
-            <div class="col-md-4">
-                <select id="menuDeroulant" class="form-select">
-                    <option value="film1">Film 1</option>
-                    <option value="film2">Film 2</option>
-                    <option value="film3">Film 3</option>
-                </select>
-            </div>
-        </div>
-        <div class="row bg-light rounded border border-primary">
-            <div class="col-md-4">
-                <img src="https://picsum.photos/id/237/200/300" alt="">
-            </div>
-            <div class="col-md-8" id="contenu">
-                <h3>The Big Lebowski</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button class="btn btn-primary">Détails</button>
-            </div>
-        </div>
-    </div>
-    <div id="Film sélecteur" class="container">
-        <div class="row align-items-center"> 
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <h2>Autres :</h2>
             </div>
             <div class="col-md-4 ">
@@ -141,19 +422,230 @@
                 </select>
             </div>
         </div>
-        <div class="row bg-light rounded border border-primary">
+        <div class="row">
             <div class="col-md-4">
-                <img src="https://picsum.photos/id/237/200/300" alt="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8" id="contenu">
-                <h3>The Big Lebowski</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button class="btn btn-primary">Détails</button>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="multipropo" class="container film-container">
+        <div class="row align-items-center"> 
+            <div class="col-md-2">
+                <h2>Autres :</h2>
+            </div>
+            <div class="col-md-4 ">
+                <select id="menuDeroulant" class="form-select">
+                    <option value="film1">Film 1</option>
+                    <option value="film2">Film 2</option>
+                    <option value="film3">Film 3</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mini-img">
+                            <img src="https://picsum.photos/id/237/200/300" alt="">
+                            <div class="overlay">
+                                <h3>Retour vers le futur</h3>
+                                <div class="d-flex justify-content-end">
+                                    <button>Détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
 
 
+    <script src="js\genreApiRequste.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+
+<div class="modal fade" id="modalfade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">The Big Lebowski</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row align-items-center">
+            <div class= "col-md-6 info">
+                <h4>The Big Lebowski</h4>
+                <p id="Annee Type">1998 - Comedy, Crime, Sport</p>
+                <p id="PG time">PG-13 - 117 minutes (USA/UK)</p>
+                <p id="IMDB">IMDB score : 8.1/10</p>
+                <p id="Author">Réalisé par : <br> Joel Cohen, Ethan Cohen</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+                <div class="img ml-auto">
+                    <img src="https://picsum.photos/id/237/200/300" alt="Film 1">
+                </div>
+          </div>
+          <div>
+            <div class="p">
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                </div>
+            <div class="avec">
+                <p>Avec :</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>  
+          </div>
+            
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
