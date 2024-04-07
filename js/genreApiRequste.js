@@ -1,22 +1,27 @@
 async function getAllPages(baseUrl) {
-    let allData = [];
-    let nextPage = baseUrl;
-  
-    while (nextPage) {
-      const response = await fetch(nextPage);
-      const data = await response.json();
-      allData = allData.concat(data.results);
+  let allData = [];
+  let nextPage = baseUrl;
+  let types = [];
 
-      nextPage = data.next;
-    }
-  
-    return allData;
+  while (nextPage) {
+    const response = await fetch(nextPage);
+    const data = await response.json();
+    allData = allData.concat(data.results);
+
+    nextPage = data.next;
   }
+
+  allData.forEach(function(item) {
+    types.push(item.name);
+  });
+
+  console.log(types);
+}
   
-  getAllPages('http://localhost:8000/api/v1/genres/')
+  getAllPages('')
     .then(data => {
       console.log(data); 
     })
     .catch(error => {
       console.error('Erreur :', error);
-    });
+    }); 
