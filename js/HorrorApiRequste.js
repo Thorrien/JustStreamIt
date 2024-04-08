@@ -1,37 +1,37 @@
-async function getRandomPageA() {
+async function getRandomPageB() {
     // Générer un nombre aléatoire entre 1 et 1000 pour la page
-    return Math.floor(Math.random() * 1045) + 1;
+    return Math.floor(Math.random() * 1912) + 1;
 }
 
-async function fetchRandomMysteryFilms() {
+async function fetchRandomHorrorFilms() {
     try {
         // Prendre 2 pages aléatoires
         const pageNumbers = [];
         for (let i = 0; i < 2; i++) {
-            const pageNumber = await getRandomPageA();
+            const pageNumber = await getRandomPageB();
             pageNumbers.push(pageNumber);
         }
 
         // Récupérer les films de chaque page et les concaténer
         let films = [];
         for (const pageNumber of pageNumbers) {
-            const response = await fetch(`http://localhost:8000/api/v1/titles/?genre=Mystery&page=${pageNumber}`);
-            if (!response.ok) {
+            const response2 = await fetch(`http://localhost:8000/api/v1/titles/?genre=Horror&page=${pageNumber}`);
+            if (!response2.ok) {
                 throw new Error('Network response was not ok');
             }
-            const data = await response.json();
-            const randomMovies = data.results.sort(() => Math.random() - 0.5).slice(0, 3); // Prendre 3 films aléatoires
+            const data2 = await response2.json();
+            const randomMovies = data2.results.sort(() => Math.random() - 0.5).slice(0, 3); // Prendre 3 films aléatoires
             films = films.concat(randomMovies);
         }
 
         // Récupérer une référence à l'élément où vous voulez ajouter les films
-        const filmsContainer = document.getElementById('filmsContainer');
+        const filmsContainer2 = document.getElementById('filmsContainer2');
 
         // Vider le conteneur des films précédents s'il y en a
-        filmsContainer.innerHTML = '';
+        filmsContainer2.innerHTML = '';
         const h2 = document.createElement('h2');
-        h2.textContent = "Mystery";
-        filmsContainer.append(h2)
+        h2.textContent = "Horror";
+        filmsContainer2.append(h2)
 
         // Boucler à travers les films et générer le contenu HTML pour chaque film
         films.forEach((film, index) => {
@@ -40,7 +40,7 @@ async function fetchRandomMysteryFilms() {
                 // Créer une nouvelle rangée (div avec la classe row)
                 const newRow = document.createElement('div');
                 newRow.classList.add('row', 'row-cols-3');
-                filmsContainer.appendChild(newRow); // Ajouter la nouvelle rangée au conteneur
+                filmsContainer2.appendChild(newRow); // Ajouter la nouvelle rangée au conteneur
             }
 
             // Créer une colonne (div avec la classe col-md-4)
@@ -89,15 +89,15 @@ async function fetchRandomMysteryFilms() {
             filmDiv.appendChild(miniImgDiv);
 
            
-            const lastRow = filmsContainer.lastChild;
+            const lastRow = filmsContainer2.lastChild;
             lastRow.appendChild(filmDiv);
         });
 
         return films;
     } catch (error) {
-        console.error('Error fetching mystery films:', error);
+        console.error('Error fetching horror films:', error);
         throw error;
     }
 }
 
-fetchRandomMysteryFilms()
+fetchRandomHorrorFilms()
