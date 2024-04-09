@@ -216,7 +216,7 @@
                 <div class="col-md-2">
                     <img class="img-fluid" src="img/logo.png" alt="Logo">
                 </div>
-                <div class="col-md-9">
+                <div class="col-lg-9 col-md-9 d-none d-md-block ">
                     <h1>Vidéo à la demande</h1>
                 </div>
             </div>
@@ -227,14 +227,20 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="film-card">
-                    <div class="image-container">
-                        <img id="bestFilmImage" src="https://picsum.photos/id/237/200/300" alt="Image du meilleur film">
-                    </div>
-                    <div class="content-container">
-                        <h3 id="bestFilmTitle">Titre du meilleur film</h3>
-                        <p id="bestFilmDescription">Description du meilleur film</p>
-                        <div class="d-flex justify-content-end">
-                            <button id="detailsButton" class="btn-primary" data-bs-toggle="modal" data-bs-target="#modalfade">Détails</button>
+                    <div class="row">
+                        <div class="col-md-3 order-md-1 order-sm-1">
+                            <div class="image-container">
+                                <img id="bestFilmImage" src="https://picsum.photos/id/237/200/300" alt="Image du meilleur film">
+                            </div>
+                        </div>
+                        <div class="col-md-9 order-md-2 order-sm-1">
+                            <div class="content-container">
+                                <h3 id="bestFilmTitle">Titre du meilleur film</h3>
+                                <p id="bestFilmDescription">Description du meilleur film</p>
+                                <div class="d-flex justify-content-end">
+                                    <button id="detailsButton" class="btn-primary" data-bs-toggle="modal" data-bs-target="#modalfade">Détails</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -266,7 +272,7 @@
                 </select>
             </div>
             <div id="filmsContainer4" class="container film-container">
-                <div class="row row-cols-3" id="AdventureMovies">
+                <div class="row row-cols-3" id="VariableMovies">
                 </div>
             </div>
         </div>
@@ -281,7 +287,7 @@
                 </select>
             </div>
             <div id="filmsContainer5" class="container film-container">
-                <div class="row row-cols-3" id="AdventureMovies">
+                <div class="row row-cols-3" id="Variable2eMovies">
                 </div>
             </div>
         </div>

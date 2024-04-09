@@ -75,19 +75,15 @@ async function fetchFilmsByGenre2(genre) {
         // Vider le conteneur des films précédents s'il y en a
         filmsContainer5.innerHTML = '';
 
+        const newRow = document.createElement('div');
+        newRow.classList.add('row');
+        filmsContainer5.appendChild(newRow);
+
         // Boucler à travers les films et générer le contenu HTML pour chaque film
         films.forEach((film, index) => {
-            // Vérifier si c'est le début d'une nouvelle ligne
-            if (index % 3 === 0) {
-                // Créer une nouvelle rangée (div avec la classe row)
-                const newRow = document.createElement('div');
-                newRow.classList.add('row', 'row-cols-3');
-                filmsContainer5.appendChild(newRow); // Ajouter la nouvelle rangée au conteneur
-            }
-
-            // Créer une colonne (div avec la classe col-md-4)
+   
             const filmDiv = document.createElement('div');
-            filmDiv.classList.add('col-md-4');
+            filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6');
 
             const miniImgDiv = document.createElement('div');
             miniImgDiv.classList.add('mini-img');
@@ -148,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ajouter un écouteur d'événements pour détecter les changements de sélection
     menuDeroulant2.addEventListener('change', async () => {
-        const selectedGenre = menuDeroulant.value;
+        const selectedGenre = menuDeroulant2.value;
 
         try {
             const films = await fetchFilmsByGenre2(selectedGenre);
