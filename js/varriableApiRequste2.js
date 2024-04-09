@@ -26,19 +26,44 @@ const maxPagesByGenre2 = {
     "Western": 317
 };
 
+const minNoteByGenre2 = {
+    "Action": 8.9,
+    "Adventure": 8.9,
+    "Animation": 8.6,
+    "Biography": 8.7,
+    "Comedy": 9.1,
+    "Crime": 9,
+    "Drama": 9.3,
+    "Family": 8.9,
+    "Fantasy": 8.6,
+    "Film-Noir": 8.1,
+    "History": 8.9,
+    "Horror": 8.5,
+    "Music": 8.8,
+    "Musical": 8.8,
+    "Mystery": 8.9,
+    "Romance": 8.8,
+    "Sci-Fi": 8.5,
+    "Sport": 8.3,
+    "Thriller": 8.9,
+    "War": 8.7,
+    "Western": 8.2
+};
+
+
 
 async function getRandomPage2(genre) {
-    // Générer un nombre aléatoire entre 1 et 1000 pour la page
-    return Math.floor(Math.random() * maxPagesByGenre2[genre]) + 1;
+
+    return Math.floor(Math.random() * maxPagesByGenre[genre]) + 1;
 }
 
 async function fetchFilmsByGenre2(genre) {
     try {
-        // Obtenir le nombre maximum de pages pour le genre donné
+
         const maxPages = maxPagesByGenre2[genre];
         
         let films = [];
-        // Si le nombre maximum de pages est égal à 1, récupérer simplement les films de la première page
+        
         if (maxPages === 1) {
             const response = await fetch(`http://localhost:8000/api/v1/titles/?genre=${genre}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
             if (!response.ok) {
@@ -49,73 +74,65 @@ async function fetchFilmsByGenre2(genre) {
             films = films.concat(randomMovies);
         }
 
-        // Sinon, prendre 2 pages aléatoires en fonction du genre
-        const pageNumbers = [];
-        for (let i = 0; i < 2; i++) {
-            const pageNumber = await getRandomPage2(genre);
-            pageNumbers.push(pageNumber);
-        }
 
-        // Récupérer les films de chaque page et les concaténer
         if (maxPages !== 1) {
-        for (const pageNumber of pageNumbers) {
-            const response2 = await fetch(`http://localhost:8000/api/v1/titles/?genre=${genre}&page=${pageNumber}`);
-            if (!response2.ok) {
-                throw new Error('Network response was not ok');
+
+            const minNote = minNoteByGenre2[genre];
+            let nextPage = `http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=${minNote}&imdb_score_max=&title=&title_contains=&genre=${genre}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`;
+            let allData = []
+        
+            while (nextPage) {
+                const response = await fetch(nextPage);
+                const data = await response.json();
+                allData = allData.concat(data.results);
+                nextPage = data.next;
             }
-            const data2 = await response2.json();
-            const randomMovies = data2.results.sort(() => Math.random() - 0.5).slice(0, 3); // Prendre 3 films aléatoires
-            films = films.concat(randomMovies);
-        }
+            
+            allData.sort((a, b) => b.imdb_score - a.imdb_score);
+            const bestMovies = allData.slice(0, 6);
+            console.log(bestMovies)
+            films = films.concat(bestMovies);
         }
 
-        // Récupérer une référence à l'élément où vous voulez ajouter les films
+
         const filmsContainer5 = document.getElementById('filmsContainer5');
-
-        // Vider le conteneur des films précédents s'il y en a
         filmsContainer5.innerHTML = '';
-
         const newRow = document.createElement('div');
-        newRow.classList.add('row');
+        newRow.classList.add('row', 'justify-content-center', 'justify-content-center');
         filmsContainer5.appendChild(newRow);
 
-        // Boucler à travers les films et générer le contenu HTML pour chaque film
+
         films.forEach((film, index) => {
    
             const filmDiv = document.createElement('div');
             filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6');
-
             const miniImgDiv = document.createElement('div');
             miniImgDiv.classList.add('mini-img');
-
             const img = document.createElement('img');
             img.alt = film.title;
 
             fetch(film.image_url)
                 .then(response => {
                     if (!response.ok) {
-                        img.src = 'https://picsum.photos/id/237/200/300';
+                        img.src = 'https://picsum.photos/200/300?random=1';
                     } else {
                         img.src = film.image_url;
                     }
                 })
                 .catch(() => {
-                    img.src = 'https://picsum.photos/id/237/200/300';
+                    img.src = 'https://picsum.photos/200/300?random=1';
                 });
 
             const overlayDiv = document.createElement('div');
             overlayDiv.classList.add('overlay');
-
             const h3 = document.createElement('h3');
             h3.textContent = film.title;
-
             const button = document.createElement('button');
             button.textContent = 'Détails';
             button.classList.add('btn', 'btn-primary');
             button.dataset.bsToggle = 'modal';
             button.dataset.bsTarget = '#modalfade';
             button.dataset.filmUrl = film.url; 
-
            
             overlayDiv.appendChild(h3);
             const divElement = document.createElement('div');
@@ -125,7 +142,6 @@ async function fetchFilmsByGenre2(genre) {
             miniImgDiv.appendChild(img);
             miniImgDiv.appendChild(overlayDiv);
             filmDiv.appendChild(miniImgDiv);
-
            
             const lastRow = filmsContainer5.lastChild;
             lastRow.appendChild(filmDiv);
@@ -142,18 +158,15 @@ async function fetchFilmsByGenre2(genre) {
 document.addEventListener('DOMContentLoaded', () => {
     const menuDeroulant2 = document.getElementById('menuDeroulant2');
 
-    // Ajouter un écouteur d'événements pour détecter les changements de sélection
     menuDeroulant2.addEventListener('change', async () => {
         const selectedGenre = menuDeroulant2.value;
 
         try {
             const films = await fetchFilmsByGenre2(selectedGenre);
-            // Faites quelque chose avec les films ici, par exemple les afficher sur la page
-
-            // Récupérer tous les boutons générés par fetchFilmsByGenre
+            
             const genreButtons = document.querySelectorAll('[data-film-url]');
             genreButtons.forEach(button => {
-                // Ajouter un écouteur d'événement à chaque bouton pour mettre à jour le contenu du modal
+                
                 button.addEventListener('click', function() {
                     updateModalContentFromButton(button);
                 });
@@ -163,6 +176,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mettre à jour le menu déroulant au chargement de la page
-    updateMenuDeroulant();
 });

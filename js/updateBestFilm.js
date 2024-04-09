@@ -34,14 +34,10 @@ async function updateBestFilm() {
         bestFilmImage.alt = topFilm.title;
         bestFilmTitle.textContent = topFilm.title;
         bestFilmDescription.textContent = topFilm.long_description;
-
-        // Mettre à jour l'attribut data-film-url du bouton "Détails" avec l'URL du film
         const detailsButton = document.getElementById('detailsButton');
         detailsButton.dataset.filmUrl = urlFilm;
     }
 }
-
-// Appel de la fonction pour mettre à jour les informations du meilleur film lorsque le DOM est chargé
 document.addEventListener("DOMContentLoaded", function() {
     updateBestFilm();
 });

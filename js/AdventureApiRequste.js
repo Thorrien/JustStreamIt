@@ -1,72 +1,58 @@
-async function getRandomPageC() {
-    // Générer un nombre aléatoire entre 1 et 1000 pour la page
-    return Math.floor(Math.random() * 1518) + 1;
-}
-
 async function fetchRandomAdventureFilms() {
     try {
-        // Prendre 2 pages aléatoires
-        const pageNumbers = [];
-        for (let i = 0; i < 2; i++) {
-            const pageNumber = await getRandomPageC();
-            pageNumbers.push(pageNumber);
+        const baseUrl = 'http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=8.9&imdb_score_max=&title=&title_contains=&genre=Adventure&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=';
+
+        let allData = [];
+        let nextPage = baseUrl;
+        let films = []
+    
+        while (nextPage) {
+            const response = await fetch(nextPage);
+            const data = await response.json();
+            allData = allData.concat(data.results);
+            nextPage = data.next;
         }
 
-        // Récupérer les films de chaque page et les concaténer
-        let films = [];
-        for (const pageNumber of pageNumbers) {
-            const response2 = await fetch(`http://localhost:8000/api/v1/titles/?genre=Adventure&page=${pageNumber}`);
-            if (!response2.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data2 = await response2.json();
-            const randomMovies = data2.results.sort(() => Math.random() - 0.5).slice(0, 3); // Prendre 3 films aléatoires
-            films = films.concat(randomMovies);
-        }
+        allData.sort((a, b) => b.imdb_score - a.imdb_score);
+        const bestMovies = allData.slice(0, 6);
+        films = films.concat(bestMovies);
 
-        // Récupérer une référence à l'élément où vous voulez ajouter les films
+
         const filmsContainer3 = document.getElementById('filmsContainer3');
-
-        // Vider le conteneur des films précédents s'il y en a
         filmsContainer3.innerHTML = '';
         const h2 = document.createElement('h2');
         h2.textContent = "Adventure";
         filmsContainer3.append(h2)
 
         const newRow = document.createElement('div');
-        newRow.classList.add('row');
+        newRow.classList.add('row', 'justify-content-center', 'justify-content-center');
         filmsContainer3.appendChild(newRow);
 
-        // Boucler à travers les films et générer le contenu HTML pour chaque film
         films.forEach((film, index) => {
    
             const filmDiv = document.createElement('div');
             filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6');
-
             const miniImgDiv = document.createElement('div');
             miniImgDiv.classList.add('mini-img');
-
             const img = document.createElement('img');
             img.alt = film.title;
 
             fetch(film.image_url)
                 .then(response => {
                     if (!response.ok) {
-                        img.src = 'https://picsum.photos/id/237/200/300';
+                        img.src = 'https://picsum.photos/200/300?random=1';
                     } else {
                         img.src = film.image_url;
                     }
                 })
                 .catch(() => {
-                    img.src = 'https://picsum.photos/id/237/200/300';
+                    img.src = 'https://picsum.photos/200/300?random=1';
                 });
 
             const overlayDiv = document.createElement('div');
             overlayDiv.classList.add('overlay');
-
             const h3 = document.createElement('h3');
             h3.textContent = film.title;
-
             const button = document.createElement('button');
             button.textContent = 'Détails';
             button.classList.add('btn', 'btn-primary');
