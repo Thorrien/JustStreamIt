@@ -16,7 +16,22 @@ async function updateModalContent(filmUrl) {
         const modalFilmTitle = document.getElementById('modalFilmTitle');
         const modalFilmImage = document.getElementById('modalFilmImage');
 
-        modalFilmImage.src = film.image_url;
+
+        fetch(film.image_url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur de chargement de l\'image');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            modalFilmImage.src = URL.createObjectURL(blob);
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement de l\'image:', error);
+            modalFilmImage.src = 'https://picsum.photos/200/300?random=1';
+        });
+
         modalFilmTitle.textContent = film.title;
         modalAnneeType.textContent = `${film.year} - ${film.genres.join(', ')}`;
         modalPGTime.textContent = `${film.rated} - ${film.duration} minutes (${film.countries})`;
@@ -70,7 +85,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
         
-        //const variableFilms = await fetchFilmsByGenre(genre);
 
         const variableButtons = document.querySelectorAll('[data-film-url]');
         variableButtons.forEach(button => {

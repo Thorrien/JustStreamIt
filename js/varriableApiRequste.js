@@ -87,7 +87,6 @@ async function fetchFilmsByGenre(genre) {
             
             allData.sort((a, b) => b.imdb_score - a.imdb_score);
             const bestMovies = allData.slice(0, 6);
-            console.log(bestMovies)
             films = films.concat(bestMovies);
         }
 
