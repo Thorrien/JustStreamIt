@@ -17,22 +17,31 @@ async function updateMenuDeroulant() {
     });
 
     const menuDeroulant = document.getElementById('menuDeroulant');
-    types.forEach(function(type) {
+    types.forEach(function(type, index) {
         const option = document.createElement('option');
         option.value = type;
         option.textContent = type;
+        if (index === 0) {
+            option.selected = true;
+        }
         menuDeroulant.appendChild(option);
+        
+        
     });
+
 
     
     let types2 = []; 
     types2 = types.slice(); 
 
     const menuDeroulant2 = document.getElementById('menuDeroulant2');
-    types2.forEach(function(type) { 
+    types2.forEach(function(type, index) { 
         const option = document.createElement('option');
         option.value = type;
         option.textContent = type;
+        if (index === 1) {
+            option.selected = true;
+        }
         menuDeroulant2.appendChild(option); 
     });
 }

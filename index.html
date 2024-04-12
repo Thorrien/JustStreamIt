@@ -5,194 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JustStreamIt</title>
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            color: #fff;
-            padding: 20px 0;
-        }
-        .header_container {
-            background-color: #61787F;
-            border: 1px solid #1f1f1f;
-        }
-        .film-container {
-            margin-top: 20px;
-            padding-top: 25px;
-            padding-bottom: 25px;
-        }
-        .film-container h2 {
-            margin-bottom: 20px;
-            color: #1f1f1f;
-            font-weight: bold;
-            font-size: 45px;
-        }
-        .film-card {
-            background-color: #fff;
-            border: 4px solid #1f1f1f;
-            padding: 20px;
-            margin-bottom: 20px;
-            width: 100%;
-            margin-left: auto; 
-            margin-right: auto; 
-            display: flex;
-        }
-        .film-card .image-container {
-            flex: 0 0 auto;
-            margin-right: 20px;
-        }
-        .film-card .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .film-card .content-container {
-            flex: 1 1 auto;
-        }
-        .film-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            font-size: 45px;
-            color: #1f1f1f;
-            font-weight: bold;
-        }
-        .film-card p {
-            color: #1f1f1f;
-            font-size: 30px; 
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: lighter;
-        }
-        .film-card button {
-            background-color: #ff00c8;
-            color: #fff;
-            border: none;
-            padding: 16px 40px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 20px;
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-        }
-        .film-card button:hover {
-            background-color: #61787F;
-        }
-
-        .mini-img {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
-            border-radius: 5px;
-            aspect-ratio: 1 / 1;
-        }
-        
-        .mini-img img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 40%;
-            left: 0;
-            width: 100%;
-            transform: translateY(-50%);
-            background-color: rgba(32, 32, 32, 0.5);
-            padding: 20px;
-            text-align: left;
-            color: #fff;
-            box-sizing: border-box; 
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .overlay h3 {
-            margin-bottom: 10px;
-        }
-        
-        .overlay button {
-            background-color: #1f1f1f;
-            color: #fff;
-            border: none;
-            padding: 8px 30px;
-            border-radius : 25px;
-            cursor: pointer;
-            align-self: flex-end
-        }
-        
-        .overlay button:hover {
-            background-color: #61787F;
-        }
-
-        .modal-info h4 {
-            margin-bottom: 10px;
-            font-size: 45px;
-            color: #1f1f1f;
-            font-weight: bold;
-            margin-bottom: 0;
-        }
-        .modal-info p {
-            font-size: 25px;
-            color: #1f1f1f;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        #Author {
-            font-size: 25px;
-            color: #1f1f1f;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        #Authorlist {
-            font-size: 25px;
-            color: #1f1f1f;
-            font-weight:lighter;
-        }
-
-        .description {
-            font-size: 25px;
-            color: #1f1f1f;
-            font-weight:lighter;
-        }
-
-        .avec p{
-            font-size: 25px;
-            color: #1f1f1f;
-            font-weight:lighter;
-            margin: 0;
-        }
-
-        #avec {
-            font-weight:bold;
-        }
-
-        .buttt {
-            
-        }
-        
-        #bttt  {
-            background-color: #ff00c8;
-            color: #fff;
-            border: none;
-            padding: 8px 100px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 20px;
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            margin-top: 50px;
-        }
-
-        
-    </style>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <script src="js\updateBestFilm.js"></script>
@@ -208,7 +21,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <body>
     <header>
         <div class="container header_container">
@@ -237,7 +49,7 @@
                             <div class="content-container">
                                 <h3 id="bestFilmTitle">Titre du meilleur film</h3>
                                 <p id="bestFilmDescription">Description du meilleur film</p>
-                                <div class="d-flex justify-content-end">
+                                <div class="d-flex justify-content-center justify-content-md-end">
                                     <button id="detailsButton" class="btn-primary" data-bs-toggle="modal" data-bs-target="#modalfade">Détails</button>
                                 </div>
                             </div>
@@ -252,6 +64,7 @@
         <div class="row row-cols-3" id="mysteryMovies">
         </div>
     </div>
+    <button id="voirPlusButton" class="btn btn-primary d-lg-none">Voir plus</button>
     <div id="filmsContainer2" class="container film-container text-md-left text-center">
         <h2>Horreur</h2>
         <div class="row row-cols-3" id="HorrorMovies">
@@ -304,34 +117,41 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="row align-items-center">
-                    <div class="col-md-6 modal-info">
+                <div class="row ">
+                    <div class="col-md-6  modal-info">
                         <h4 id="modalFilmTitle">Titre du film</h4>
                         <p id="modalAnneeType">Année - Genres</p>
                         <p id="modalPGTime">PEG - Durée minutes (Pays)</p>
                         <p id="modalIMDB">IMDB score : X.X/10</p>
+                        <p><br></p>
                         <p>Réalisé par :</p>
                         <p id="modalAuthors">Réalisateur 1, Réalisateur 2</p>
+                        <p><br></p>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end">
-                        <div class="img ml-auto">
-                            <img id="modalFilmImage" src="https://picsum.photos/id/237/200/300" alt="Image du film">
+                    <div class="col-md-6 col-sm-12 d-flex order-2 order-md-0  justify-content-center justify-content-md-end">
+                        <div class="img justify-content-center col-md-12 col-lg-6 col-sm-10">
+                            <img id="modalFilmImage" src="https://picsum.photos/id/237/200/300" class="w-100">
                         </div>
                     </div>
                     <div>
                         <div class="description">
                             <p id="modalDescription">Description du film</p>
                         </div>
-                        <div class="avec">
-                            <p>Avec :</p>
-                            <p id="modalAvec">Acteur 1, Acteur 2</p>
-                        </div>  
                     </div>
+                    <div class="avec order-3 ">
+                        <p><br></p>
+                        <p><b>Avec :</b></p>
+                        <p id="modalAvec">Acteur 1, Acteur 2</p>
+                    </div>  
+
                 </div>
-                <div class="buttt d-flex justify-content-center">
-                    <button type="button" id="bttt" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <div class= "d-none d-md-block">
+                    <div class="buttt d-flex justify-content-center">
+                        <button type="button" id="bttt" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="js\more.js"></script>

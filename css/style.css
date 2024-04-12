@@ -1,0 +1,206 @@
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+header {
+    color: #fff;
+    padding: 20px 0;
+}
+.header_container {
+    background-color: #61787F;
+    border: 1px solid #1f1f1f;
+}
+.film-container {
+    margin-top: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.film-container h2 {
+    margin-bottom: 20px;
+    color: #1f1f1f;
+    font-weight: bold;
+    font-size: 45px;
+}
+.film-card {
+    background-color: #fff;
+    border: 4px solid #1f1f1f;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    margin-left: auto; 
+    margin-right: auto; 
+    display: flex;
+}
+.film-card .image-container {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+.film-card .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.film-card .content-container {
+    flex: 1 1 auto;
+}
+.film-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-size: 45px;
+    color: #1f1f1f;
+    font-weight: bold;
+}
+.film-card p {
+    color: #1f1f1f;
+    font-size: 30px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+}
+.film-card button {
+    background-color: #ff00c8;
+    color: #fff;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.film-card button:hover {
+    background-color: #61787F;
+}
+
+.mini-img {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+}
+
+.mini-img img {
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    background-color: rgba(32, 32, 32, 0.5);
+    padding: 20px;
+    text-align: left;
+    color: #fff;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay h3 {
+    margin-bottom: 10px;
+}
+
+.overlay button {
+    background-color: #1f1f1f;
+    color: #fff;
+    border: none;
+    padding: 8px 30px;
+    border-radius : 25px;
+    cursor: pointer;
+    align-self: flex-end
+}
+
+.overlay button:hover {
+    background-color: #61787F;
+}
+
+.modal-info h4 {
+    margin-bottom: 10px;
+    font-size: 45px;
+    color: #1f1f1f;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.modal-info p {
+    font-size: 25px;
+    color: #1f1f1f;
+    font-weight: bold;
+    margin: 0;
+}
+
+#Author {
+    font-size: 25px;
+    color: #1f1f1f;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#Authorlist {
+    font-size: 25px;
+    color: #1f1f1f;
+    font-weight:lighter;
+}
+
+.description {
+    font-size: 25px;
+    color: #1f1f1f;
+    font-weight:lighter;
+}
+
+.avec p{
+    font-size: 25px;
+    color: #1f1f1f;
+    font-weight:lighter;
+    margin: 0;
+}
+
+#avec {
+    font-weight:bold;
+}
+
+.buttt {
+    
+}
+
+
+#voirPlusButton {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 30px;
+    margin: 0 auto; /* Centre le bouton horizontalement */
+    display: block; /* Pour que le bouton occupe toute la largeur disponible */
+}
+
+#voirMoinButton {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 30px;
+    margin: 0 auto; /* Centre le bouton horizontalement */
+    display: block; /* Pour que le bouton occupe toute la largeur disponible */
+}
+
+#bttt  {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 8px 100px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 50px;
+}
+
