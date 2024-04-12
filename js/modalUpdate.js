@@ -41,8 +41,7 @@ async function updateModalContentFromButton(button) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const films = await fetchRandomMysteryFilms();
-        console.log('Films chargés :', films);
+        await fetchRandomMysteryFilms();
 
         const mysteryButtons = document.querySelectorAll('[data-film-url]');
         mysteryButtons.forEach(button => {
@@ -52,8 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
 
-        const horrorFilms = await fetchRandomHorrorFilms();
-        console.log('Films d\'horreur chargés :', horrorFilms);
+        await fetchRandomHorrorFilms();
 
         const horrorButtons = document.querySelectorAll('[data-film-url]');
         horrorButtons.forEach(button => {
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
 
-        const adventureFilms = await fetchRandomAdventureFilms();
+        await fetchRandomAdventureFilms();
 
         const adventureButtons = document.querySelectorAll('[data-film-url]');
         adventureButtons.forEach(button => {
@@ -72,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
         
-        const variableFilms = await fetchFilmsByGenre(genre);
+        //const variableFilms = await fetchFilmsByGenre(genre);
 
         const variableButtons = document.querySelectorAll('[data-film-url]');
         variableButtons.forEach(button => {

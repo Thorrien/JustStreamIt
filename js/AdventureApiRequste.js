@@ -29,9 +29,15 @@ async function fetchRandomAdventureFilms() {
         filmsContainer3.appendChild(newRow);
 
         films.forEach((film, index) => {
-   
+
             const filmDiv = document.createElement('div');
-            filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6');
+            if (index < 2) {
+                filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6');
+            } else if (index < 4) {
+                filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6', 'film-thumbnail2', 'd-none', 'd-md-block');
+            } else {
+                filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6', 'film-thumbnail2', 'd-none', 'd-lg-block');
+            }
             const miniImgDiv = document.createElement('div');
             miniImgDiv.classList.add('mini-img');
             const img = document.createElement('img');
@@ -81,5 +87,3 @@ async function fetchRandomAdventureFilms() {
         throw error;
     }
 }
-
-fetchRandomAdventureFilms()

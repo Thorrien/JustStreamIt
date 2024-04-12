@@ -21,8 +21,9 @@ async function updateMenuDeroulant() {
         const option = document.createElement('option');
         option.value = type;
         option.textContent = type;
-        if (index === 0) {
+        if (index === 3) {
             option.selected = true;
+            fetchFilmsByGenre(option.value)
         }
         menuDeroulant.appendChild(option);
         
@@ -39,10 +40,14 @@ async function updateMenuDeroulant() {
         const option = document.createElement('option');
         option.value = type;
         option.textContent = type;
-        if (index === 1) {
+        
+        if (index === 6) {
             option.selected = true;
+            fetchFilmsByGenre2(option.value)
         }
-        menuDeroulant2.appendChild(option); 
+        menuDeroulant2.appendChild(option);
+        
+        
     });
 }
 

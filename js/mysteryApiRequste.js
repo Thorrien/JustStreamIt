@@ -30,16 +30,16 @@ async function fetchRandomMysteryFilms() {
         filmsContainer.appendChild(newRow);
 
         films.forEach((film, index) => {
-   
 
             const filmDiv = document.createElement('div');
             if (index < 2) {
-                filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6', 'film-thumbnail');
+                filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6');
             } else if (index < 4) {
                 filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6', 'film-thumbnail', 'd-none', 'd-md-block');
             } else {
                 filmDiv.classList.add('col-10', 'col-lg-4', 'col-sm-6', 'film-thumbnail', 'd-none', 'd-lg-block');
-            }            const miniImgDiv = document.createElement('div');
+            }            
+            const miniImgDiv = document.createElement('div');
             miniImgDiv.classList.add('mini-img');
             const img = document.createElement('img');
             img.alt = film.title;
@@ -88,5 +88,3 @@ async function fetchRandomMysteryFilms() {
         throw error;
     }
 }
-
-fetchRandomMysteryFilms()

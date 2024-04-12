@@ -171,17 +171,7 @@ header {
 }
 
 
-#voirPlusButton {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    padding: 8px 30px;
-    border-radius: 30px;
-    margin: 0 auto; /* Centre le bouton horizontalement */
-    display: block; /* Pour que le bouton occupe toute la largeur disponible */
-}
-
-#voirMoinButton {
+#voirPlusButton, #voirPlusButton2, #voirPlusButton3, #voirPlusButton4, #voirPlusButton5 {
     background-color: #ff0000;
     color: #fff;
     border: none;
