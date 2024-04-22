@@ -45,46 +45,9 @@ async function updateModalContent(filmUrl) {
     }
 }
 
-async function updateModalContentFromButton(button) {
-    try {
-        const filmUrl = button.getAttribute('data-film-url');
-        await updateModalContent(filmUrl);
-    } catch (error) {
-        console.error('Erreur lors de la mise à jour du contenu du modal :', error);
-    }
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        await fetchRandomMysteryFilms();
-
-        const mysteryButtons = document.querySelectorAll('[data-film-url]');
-        mysteryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                updateModalContentFromButton(button);
-            });
-        });
-
-
-        await fetchRandomHorrorFilms();
-
-        const horrorButtons = document.querySelectorAll('[data-film-url]');
-        horrorButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                updateModalContentFromButton(button);
-            });
-        });
-
-
-        await fetchRandomAdventureFilms();
-
-        const adventureButtons = document.querySelectorAll('[data-film-url]');
-        adventureButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                updateModalContentFromButton(button);
-            });
-        });
-        
+        await updateBestFilm();
 
         const variableButtons = document.querySelectorAll('[data-film-url]');
         variableButtons.forEach(button => {
@@ -93,12 +56,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
         
-        
-        const bestFilmButton = document.getElementById('bestFilmButton');
+        const bestFilmButton = document.getElementById('detailsButton');
         if (bestFilmButton) {
             bestFilmButton.addEventListener('click', updateBestFilm);
+            updateModalContentFromButton(bestFilmButton);
         }
     } catch (error) {
         console.error('Une erreur est survenue lors du chargement des films :', error);
     }
 });
+
+async function updateModalContentFromButton(button) {
+    try {
+        const filmUrl = button.getAttribute('data-film-url');
+        await updateModalContent(filmUrl);
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour du contenu du modal :', error);
+    }
+}

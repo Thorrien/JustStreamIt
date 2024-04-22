@@ -23,7 +23,7 @@ async function updateMenuDeroulant() {
         option.textContent = type;
         if (index === 3) {
             option.selected = true;
-            fetchFilmsByGenre(option.value)
+            fetchFilmsByGenre(option.value, 'filmsContainer4')
         }
         menuDeroulant.appendChild(option);
         
@@ -43,7 +43,7 @@ async function updateMenuDeroulant() {
         
         if (index === 6) {
             option.selected = true;
-            fetchFilmsByGenre2(option.value)
+            fetchFilmsByGenre(option.value, 'filmsContainer5')
         }
         menuDeroulant2.appendChild(option);
         
